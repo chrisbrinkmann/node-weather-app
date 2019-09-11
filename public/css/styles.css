@@ -1,0 +1,65 @@
+body {
+  font-family: 'Roboto Mono', sans-serif;
+  background: linear-gradient(to right, rgb(255, 255, 255), rgb(150, 150, 150));
+  color: #444;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+  /*lets main grow to take up all extra space*/
+}
+
+header {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 3rem;
+  padding-bottom: 1rem;
+  margin: 0;
+}
+
+header nav a {
+  color: #444;
+  text-decoration: none;
+  margin-right: 1rem
+}
+
+.portrait {
+  width: 250px;
+  border-radius: 15px;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  margin-top: 1rem;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+input {
+  border: 1px solid #aaa;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  focus
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #aaa;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background: #aaa;
+  color: white;
+}
+
+*:focus {
+  outline: none;
+}
