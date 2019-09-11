@@ -1,8 +1,8 @@
 const request = require('request')
 
 /**
- * make a request to the mapbox geocode API
- * provide latitude, longitude, API returns weather info
+ * Makes a request to the Mapbox Geocode API
+ * provide latitude, longitude... API returns weather info
  */
 const forecast = (latitude, longitude, callback) => {
   const url = `https://api.darksky.net/forecast/3edc660c7d94a449b1201cfd347588ad/${latitude},${longitude}?`

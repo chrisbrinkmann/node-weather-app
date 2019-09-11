@@ -13,7 +13,8 @@ weatherForm.addEventListener('submit', e => {
 
   // fetch is a browser based API, but we can use it because this script
   // runs in the client browser (called from index.hbs)
-  fetch(`http://localhost:3000/weather?address=${search.value}`)
+  // we leave off the base url (why no process env needed?)
+  fetch(`/weather?address=${search.value}`)
     .then(resp => resp.json())
     .then(data => {
       if (data.error) {

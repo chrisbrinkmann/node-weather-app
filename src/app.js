@@ -4,6 +4,7 @@ const hbs = require('hbs')
 const dotenv = require('dotenv').config({ path: path.join(__dirname, '../.env')})
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+
 const app = express()
 
 // define paths for express config
@@ -17,9 +18,14 @@ app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
+
 // .use runs middleware (auxiliary functions)
 // .static takes an arg of the path to the folder where we serve static assets from
 app.use(express.static(publicDirectoryPath))
+
+/**
+ * RENDER VIEWS
+ */
 
 app.get('', (req, res) => {
   // because we used .set to set the app view engine to hbs,
@@ -47,8 +53,11 @@ app.get('/help', (req, res) => {
   })
 })
 
-// route for geocode and forecast API requests
-// requires an address query string value
+/**
+ * GEOCODE & FORECAST API CALLS
+ * Requested by fetch from client script in /public/js/app.js on form submit
+ * Returns forecast & location
+ */
 app.get('/weather', (req, res) => {
   if (!req.query.address) {
     return res.send({
@@ -93,6 +102,10 @@ app.get('/products', (req, res) => {
     products: []
   })
 })
+
+/**
+ * RENDER 404 views
+ */
 
 app.get('/help/*', (req, res) => {
   res.render('404', {
