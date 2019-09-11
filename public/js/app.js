@@ -1,7 +1,7 @@
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
-let locationElem = document.querySelector('#location')
-let forecastElem = document.querySelector('#forecast')
+const locationElem = document.querySelector('#location')
+const forecastElem = document.querySelector('#forecast')
 
 // send form input to server's /weather route
 // /weather sends input (address) to geocode+forecast API
