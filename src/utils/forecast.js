@@ -1,5 +1,9 @@
 const request = require('request')
 
+const displayTemp = (type, temp) => {
+  return `\r\n${type}: ${Math.round(temp)}${String.fromCharCode(176)}F`
+}
+
 /**
  * Makes a request to the Mapbox Geocode API
  * provide latitude, longitude... API returns weather info
@@ -26,21 +30,13 @@ const forecast = (latitude, longitude, callback) => {
       callback(
         undefined,
         body.daily.data[0].summary +
-        '\r\nCurrent: ' +
-        body.currently.temperature +
-        String.fromCharCode(176) +
-        'F' +
-        '\r\nHigh: ' +
-        body.daily.data[0].temperatureHigh +
-        String.fromCharCode(176) +
-        'F' +
-        '\r\nLow: ' +
-        body.daily.data[0].temperatureLow +
-        String.fromCharCode(176) +
-        'F' +
-        '\r\nHumidity: ' + body.daily.data[0].humidity +
+        displayTemp('Current', body.currently.temperature) +
+        displayTemp('High', body.daily.data[0].temperatureHigh) +
+        displayTemp('Low', body.daily.data[0].temperatureLow) +
+        '\r\nHumidity: ' +
+        body.daily.data[0].humidity +
         '\r\nPrecip. chance: ' +
-        body.daily.data[0].precipProbability + '%'
+        Math.round(body.daily.data[0].precipProbability * 100) + '%'
       )
     }
   })
