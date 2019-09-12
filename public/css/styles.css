@@ -60,6 +60,10 @@ button {
   color: white;
 }
 
+#forecast {
+  white-space: pre;
+}
+
 *:focus {
   outline: none;
 }

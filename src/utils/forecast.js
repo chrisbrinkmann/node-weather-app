@@ -23,7 +23,25 @@ const forecast = (latitude, longitude, callback) => {
 
     } else {
       // success, response from API rcvd; pass data back to callback
-      callback(undefined, `${body.daily.data[0].summary} It is currently ${body.currently.temperature}${String.fromCharCode(176)}F. There is a ${body.currently.precipProbability}% chance of rain.`)
+      callback(
+        undefined,
+        body.daily.data[0].summary +
+        '\r\nCurrent: ' +
+        body.currently.temperature +
+        String.fromCharCode(176) +
+        'F' +
+        '\r\nHigh: ' +
+        body.daily.data[0].temperatureHigh +
+        String.fromCharCode(176) +
+        'F' +
+        '\r\nLow: ' +
+        body.daily.data[0].temperatureLow +
+        String.fromCharCode(176) +
+        'F' +
+        '\r\nHumidity: ' + body.daily.data[0].humidity +
+        '\r\nPrecip. chance: ' +
+        body.daily.data[0].precipProbability + '%'
+      )
     }
   })
 }
