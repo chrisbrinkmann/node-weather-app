@@ -9,7 +9,7 @@ const displayTemp = (type, temp) => {
  * provide latitude, longitude... API returns weather info
  */
 const forecast = (latitude, longitude, callback) => {
-  const url = `https://api.darksky.net/forecast/3edc660c7d94a449b1201cfd347588ad/${latitude},${longitude}?`
+  const url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${latitude},${longitude}`
   
   request({ url, json: true }, (error, response, body) => {
     
